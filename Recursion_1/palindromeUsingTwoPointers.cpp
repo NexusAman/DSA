@@ -1,35 +1,32 @@
-#include <bits\stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+
+// case in-sensitive
+bool isPalindrome(const string &str, int low, int high)
+{
+    while (low < high)
+    {
+        if (tolower(str[low]) != tolower(str[high]))
+            return false;
+
+        low++;
+        high--;
+    }
+    return true;
+}
 
 int main()
 {
     string str;
     cout << "Enter a string: ";
-    cin >> str;
+    getline(cin, str);
 
-    bool flag = false;
     int low = 0, high = str.length() - 1;
-    while (low < high)
-    {
-        if (str[low] != str[high])
-        {
-            flag = false;
-            break;
-        }
-        else
-        {
-            low++;
-            high--;
-            flag = true;
-        }
-    }
 
-    if (flag)
-    {
-        cout << "Palindrome" << endl;
-    }
+    if (isPalindrome(str, low, high))
+        cout << "Palindrome";
     else
-    {
         cout << "Not Palindrome";
-    }
+
+    return 0;
 }
