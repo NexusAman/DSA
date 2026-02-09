@@ -24,6 +24,6 @@ int main()
     }
     else
     {
-        cout << "Not Palindrome";
+        cout << "Not Palindrome" << endl;
     }
 }
