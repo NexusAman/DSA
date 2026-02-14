@@ -28,7 +28,7 @@ int squareRoot(int n)
 
         if (mid * mid <= n)
         {
-            ans = int(mid);
+            ans = mid;
             low = mid + 1;
         }
         else
