@@ -24,16 +24,20 @@ void fibonacci(int n, int firstTerm, int secondTerm, int count)
     }
     else
     {
-        return fibonacci()
+        int nextTerm = firstTerm + secondTerm;
+        cout << nextTerm << " ";
+        fibonacci(n, secondTerm, nextTerm, count + 1);
     }
+}
 
-    int main()
-    {
-        int n;
-        cout << "Enter a number: ";
-        cin >> n;
-        int firstTerm = 0;
-        int secondTerm = 1;
-        int count = 0;
-        fibonacci(n, firstTerm, secondTerm, count);
-    }
+int main()
+{
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    int firstTerm = 0;
+    int secondTerm = 1;
+    int count = 0;
+    fibonacci(n, firstTerm, secondTerm, count);
+    return 0;
+}
