@@ -44,10 +44,10 @@ int main()
 
     if (cnt == 2)
     {
-        cout << "It is a prime number.";
+        cout << "It is a prime number." << endl;
     }
     else
     {
-        cout << "It is not a prime number.";
+        cout << "It is not a prime number." << endl;
     }
 }
