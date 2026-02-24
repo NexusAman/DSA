@@ -22,14 +22,14 @@ bool check(vector<int> nums)
 }
 int main()
 {
-    vector<int> nums = {2, 1, 3, 4};
-    cout << check(nums);
-    // if (check(nums))
-    // {
-    //     cout << "Array is sorted & rotated ";
-    // }
-    // else
-    // {
-    //     cout << "Array is not sorted & rotated ";
-    // }
+    vector<int> nums = {2, 3, 4, 1};
+    // cout << check(nums);
+    if (check(nums))
+    {
+        cout << "Array is sorted & rotated ";
+    }
+    else
+    {
+        cout << "Array is not sorted & rotated ";
+    }
 }
