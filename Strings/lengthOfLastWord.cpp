@@ -18,7 +18,7 @@ int lengthOfLastWord(string s)
 }
 int main()
 {
-    string s = "Hello World  ";
+    string s = "Hello World  bro";
     cout << lengthOfLastWord(s);
     return 0;
 }
