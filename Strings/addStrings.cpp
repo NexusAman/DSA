@@ -25,7 +25,7 @@ string addStrings(string num1, string num2)
 
         int sum = digit1 + digit2 + carry;
         int newDigit = sum % 10;
-        int carry = sum / 10;
+        carry = sum / 10;
 
         result += (newDigit + '0');
     }
