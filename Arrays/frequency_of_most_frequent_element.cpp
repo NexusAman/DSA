@@ -8,7 +8,7 @@ int maxFrequency(vector<int> &nums, int k)
     int maxFreq = 1;
     for (int i = 0; i < nums.size(); i++)
     {
-        int cost = 0;
+        long long cost = 0;
         int count = 1;
         for (int j = i - 1; j >= 0; j--)
         {
