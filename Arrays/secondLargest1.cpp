@@ -34,28 +34,23 @@ int secondLargest(vector<int> &nums)
 */
 
 // Optimal Approach
-int secondLargest(vector<int> &nums)
-{
-    int largest = INT_MIN, secLargest = INT_MIN;
+int secondLargest(vector<int> &nums) {
+  int largest = INT_MIN, secLargest = INT_MIN;
 
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (nums[i] > largest)
-        {
-            secLargest = largest;
-            largest = nums[i];
-        }
-
-        if (nums[i] > secLargest && nums[i] != largest)
-        {
-            secLargest = nums[i];
-        }
+  for (int i = 0; i < nums.size(); i++) {
+    if (nums[i] > largest) {
+      secLargest = largest;
+      largest = nums[i];
     }
-    return secLargest;
+
+    if (nums[i] > secLargest && nums[i] != largest) {
+      secLargest = nums[i];
+    }
+  }
+  return secLargest;
 }
 
-int main()
-{
-    vector<int> nums = {1, 2, 32, 4, 5, 356};
-    cout << secondLargest(nums);
+int main() {
+  vector<int> nums = {1, 2, 32, 4, 5, 356};
+  cout << secondLargest(nums);
 }
