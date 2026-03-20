@@ -30,7 +30,7 @@ void nextPermutation(vector<int> &nums)
     // find the rightmost element greater than pivot (just greater)
     for (int i = n - 1; i > pivot; i--)
     {
-        if (nums[i] > pivot)
+        if (nums[i] > nums[pivot])
         {
             swap(nums[i], nums[pivot]); // swap with pivot element
             break;
