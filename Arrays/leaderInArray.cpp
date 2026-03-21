@@ -34,6 +34,7 @@ vector<int> leaderInArray(vector<int> &nums)
     return leadersArray;
     */
 
+    /*
     // Brute Force
     vector<int> leadersArray;
 
@@ -54,6 +55,26 @@ vector<int> leaderInArray(vector<int> &nums)
             leadersArray.push_back(nums[i]);
         }
     }
+
+    return leadersArray;
+    */
+
+    // Optimal Approach (By Self)
+    vector<int> leadersArray;
+    int n = nums.size();
+    int leader = nums[n - 1];
+    leadersArray.push_back(leader);
+
+    for (int i = n - 2; i >= 0; i--)
+    {
+        if (nums[i] > leader)
+        {
+            leadersArray.push_back(nums[i]);
+            leader = nums[i];
+        }
+    }
+
+    reverse(leadersArray.begin(), leadersArray.end());
 
     return leadersArray;
 }
