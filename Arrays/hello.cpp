@@ -1,15 +1,16 @@
 #include <iostream>
+#include <format>
+#include <string>
 using namespace std;
 
 void hello(string name)
 {
-    cout << "good night " + name + "!";
-    // return;
+    cout << format("good night {}!", name);
 }
 
 int main()
 {
-    cout << "Hello World!" << endl;
-    hello("Aman");
+    cout << "Hello Composer!" << endl;
+    hello("Sidhant");
     return 0;
 }
