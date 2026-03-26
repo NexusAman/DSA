@@ -3,6 +3,7 @@ using namespace std;
 
 void rotate(vector<vector<int>> &matrix)
 {
+    /*
     int m = matrix.size();    // number of rows
     int n = matrix[0].size(); // number of columns
 
@@ -21,6 +22,25 @@ void rotate(vector<vector<int>> &matrix)
 
     // copy rotated matrix back to original matrix
     matrix = rotatedMatrix;
+    */
+
+    // Optimal Approach
+    int n = matrix.size(); // matrix is square (n x n)
+
+    // transpose the matrix → (i, j) ↔ (j, i)
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++) // avoid double swap
+        {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+
+    // reverse each row to get 90° clockwise rotation
+    for (int i = 0; i < n; i++)
+    {
+        reverse(matrix[i].begin(), matrix[i].end());
+    }
 }
 
 int main()
