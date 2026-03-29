@@ -44,7 +44,6 @@ int subarraySum(vector<int> &nums, int k)
     */
 
     // Optimal Approach
-    unordered_map<int, int> mpp;
 }
 int main()
 {
