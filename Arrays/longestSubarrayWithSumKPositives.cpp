@@ -2,6 +2,8 @@
 using namespace std;
 int longestSubarray(vector<int> &nums, int k)
 {
+    /*
+    //Brute force approach
     int maxLen = 0;
     for (int i = 0; i < nums.size(); i++)
     {
@@ -17,6 +19,9 @@ int longestSubarray(vector<int> &nums, int k)
         }
     }
     return maxLen;
+    */
+
+    // Optimal Approach
 }
 int main()
 {
