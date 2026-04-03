@@ -10,7 +10,7 @@ void hello(string name)
 
 int main()
 {
-    cout << "Hello Composer!" << endl;
-    hello("Sidhant");
+    cout << "Hello Genius!" << endl;
+    hello("Aman");
     return 0;
 }
