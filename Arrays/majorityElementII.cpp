@@ -50,6 +50,62 @@ vector<int> majorityElement(vector<int> &nums)
     */
 
     // Optimal Approach
+    int n = nums.size();
+    int candidate1 = -1;
+    int candidate2 = -1;
+    int count1 = 0;
+    int count2 = 0;
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] == candidate1)
+        {
+            count1++;
+        }
+        else if (nums[i] == candidate2)
+        {
+            count2++;
+        }
+        else if (count1 == 0)
+        {
+            candidate1 = nums[i];
+            count1 = 1;
+        }
+        else if (count2 == 0)
+        {
+            candidate2 = nums[i];
+            count2 = 1;
+        }
+        else
+        {
+            count1--;
+            count2--;
+        }
+    }
+
+    // verification step
+    int countV1 = 0;
+    int countV2 = 0;
+    vector<int> ans;
+
+    for (int num : nums)
+    {
+        if (num == candidate1)
+            countV1++;
+        else if (num == candidate2)
+            countV2++;
+    }
+
+    if (countV1 > n / 3)
+    {
+        ans.push_back(candidate1);
+    }
+    if (countV2 > n / 3)
+    {
+        ans.push_back(candidate2);
+    }
+
+    return ans;
 }
 int main()
 {
