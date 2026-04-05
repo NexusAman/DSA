@@ -3,7 +3,7 @@ using namespace std;
 vector<int> majorityElement(vector<int> &nums)
 {
     /*
-    //Brute Force
+    //Brute Force Approach
     int mini = nums.size() / 3;
     vector<int> ans;
 
