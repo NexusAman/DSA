@@ -1,66 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-class Solution
+vector<vector<int>> fourSum(vector<int> &nums, int target)
 {
-public:
-    // Function to find quadruplets with sum = target
-    vector<vector<int>> fourSum(vector<int> &arr, int target)
+    int n = nums.size();
+    set<vector<int>> st;
+    for (int i = 0; i < n; i++)
     {
-        // Get size of array
-        int n = arr.size();
-        // Use set to avoid duplicate quadruplets
-        set<vector<int>> st;
-
-        // First loop - pick first element
-        for (int i = 0; i < n; i++)
+        for (int j = i + 1; j < n; j++)
         {
-            // Second loop - pick second element
-            for (int j = i + 1; j < n; j++)
+            for (int k = j + 1; k < n; k++)
             {
-                // Third loop - pick third element
-                for (int k = j + 1; k < n; k++)
+                for (int l = k + 1; l < n; l++)
                 {
-                    // Fourth loop - pick fourth element
-                    for (int l = k + 1; l < n; l++)
+                    long long sum = (long long)nums[i] + nums[j] + nums[k] + nums[l];
+                    if (sum == target)
                     {
-                        // Calculate sum of four chosen numbers
-                        long long sum = (long long)arr[i] + arr[j] + arr[k] + arr[l];
-                        // Check if sum matches target
-                        if (sum == target)
-                        {
-                            // Store quadruplet in sorted order
-                            vector<int> temp = {arr[i], arr[j], arr[k], arr[l]};
-                            sort(temp.begin(), temp.end());
-                            // Insert into set to ensure uniqueness
-                            st.insert(temp);
-                        }
+                        vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
+                        sort(temp.begin(), temp.end());
+                        st.insert(temp);
                     }
                 }
             }
         }
-        // Convert set into vector of quadruplets
-        return vector<vector<int>>(st.begin(), st.end());
     }
-};
-
+    vector<vector<int>> ans(st.begin(), st.end());
+    return ans;
+}
 int main()
 {
-    // Input array
-    vector<int> arr = {1, 0, -1, 0, -2, 2};
-    // Target sum
+    vector<int> nums = {1, 0, -1, 0, -2, 2};
     int target = 0;
+    vector<vector<int>> result = fourSum(nums, target);
 
-    // Create object
-    Solution obj;
-    // Get all quadruplets
-    vector<vector<int>> ans = obj.fourSum(arr, target);
-
-    // Print result
-    for (auto quad : ans)
+    for (auto row : result)
     {
-        for (int num : quad)
-            cout << num << " ";
+        for (auto val : row)
+        {
+            cout << val << " ";
+        }
         cout << endl;
     }
+    return 0;
 }
