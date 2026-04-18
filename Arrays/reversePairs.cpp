@@ -23,5 +23,4 @@ int main()
     vector<int> nums = {1, 3, 2, 3, 1};
     int count = reversePairs(nums);
     cout << format("Reverse pairs exists in nums array : {}", count);
-    return 0;
 }
