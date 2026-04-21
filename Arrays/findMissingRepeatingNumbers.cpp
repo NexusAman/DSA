@@ -2,6 +2,38 @@
 using namespace std;
 vector<int> findMissingRepeatingNumbers(vector<int> &nums)
 {
+    /*
+    //By Self
+    unordered_map<int, int> mpp;
+    int A = -1;
+    int B = -1;
+    int arrSum = 0;
+    int totalSum = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        mpp[nums[i]]++;
+        arrSum += nums[i];
+    }
+
+    for (int i = 1; i <= nums.size(); i++)
+    {
+        totalSum += i;
+    }
+
+    for (auto &val : mpp)
+    {
+        if (val.second == 2)
+        {
+            A = val.first;
+        }
+    }
+
+    B = totalSum - (arrSum - A);
+
+    return {A, B};
+    */
+
+    /*
     // Brute Force Approach
     int n = nums.size();
     int A = -1, B = -1;
@@ -31,34 +63,30 @@ vector<int> findMissingRepeatingNumbers(vector<int> &nums)
         }
     }
     return {A, B};
+    */
 
     /*
-    //By Self
-    unordered_map<int, int> mpp;
-    int A = -1;
-    int B = -1;
-    int arrSum = 0;
-    int totalSum = 0;
-    for (int i = 0; i < nums.size(); i++)
+    // Better Approach
+    int n = nums.size();
+    int hash[n + 1] = {0};
+    int A = -1, B = -1;
+
+    for (int i = 0; i < n; i++)
     {
-        mpp[nums[i]]++;
-        arrSum += nums[i];
+        hash[nums[i]]++;
     }
 
-    for (int i = 1; i <= nums.size(); i++)
+    for (int i = 1; i <= n; i++)
     {
-        totalSum += i;
-    }
-
-    for (auto &val : mpp)
-    {
-        if (val.second == 2)
+        if (hash[i] == 2)
         {
-            A = val.first;
+            A = i;
+        }
+        else if (hash[i] == 0)
+        {
+            B = i;
         }
     }
-
-    B = totalSum - (arrSum - A);
 
     return {A, B};
     */
