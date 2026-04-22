@@ -91,7 +91,7 @@ vector<int> findMissingRepeatingNumbers(vector<int> &nums)
     return {A, B};
     */
 
-    // Optimal Approach 1
+    // Optimal Approach
     long long n = nums.size();
     long long S = 0;
     long long SN = (n * (n + 1)) / 2;
