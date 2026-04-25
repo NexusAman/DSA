@@ -22,6 +22,37 @@ int longestSubarray(vector<int> &nums, int k)
     }
     return maxLen;
     */
+
+    // Optimal Approach
+    unordered_map<long long, int> preSumMap;
+    int maxLen = 0;
+    long long sum = 0;
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        sum += nums[i];
+
+        if (sum == k)
+        {
+            maxLen = max(maxLen, i + 1);
+        }
+        else
+        {
+            int rem = sum - k;
+
+            if (preSumMap.find(rem) != preSumMap.end())
+            {
+                int len = i - preSumMap[rem];
+                maxLen = max(maxLen, len);
+            }
+
+            if (preSumMap.find(sum) == preSumMap.end())
+            {
+                preSumMap[sum] = i;
+            }
+        }
+    }
+    return maxLen;
 }
 int main()
 {
