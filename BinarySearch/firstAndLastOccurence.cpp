@@ -1,5 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
+int firstOccurence(vector<int> &nums, int target)
+{
+    int n = nums.size();
+    int first = -1;
+    int low = 0, high = n - 1;
+
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+
+        if (nums[mid] == target)
+        {
+            first = mid;
+            high = mid - 1;
+        }
+        else if (nums[mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+    return first;
+}
+
+int lastOccurence(vector<int> &nums, int target)
+{
+    int n = nums.size();
+    int last = -1;
+    int low = 0, high = n - 1;
+
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+
+        if (nums[mid] == target)
+        {
+            last = mid;
+            low = mid + 1;
+        }
+        else if (nums[mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+    return last;
+}
 vector<int> searchRange(vector<int> &nums, int target)
 {
     /*
@@ -47,6 +100,7 @@ vector<int> searchRange(vector<int> &nums, int target)
     return {first, last};
     */
 
+    /*
     // Optimal Approach 1
     auto lb = lower_bound(nums.begin(), nums.end(), target);
 
@@ -60,6 +114,14 @@ vector<int> searchRange(vector<int> &nums, int target)
     return {
         (int)(lb - nums.begin()),
         (int)(ub - nums.begin() - 1)};
+    */
+
+    // Optimal For Interview
+    int first = firstOccurence(nums, target);
+    if (first == -1)
+        return {-1, -1};
+    int last = lastOccurence(nums, target);
+    return {first, last};
 }
 int main()
 {
