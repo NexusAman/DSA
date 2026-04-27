@@ -3,7 +3,7 @@ using namespace std;
 vector<int> searchRange(vector<int> &nums, int target)
 {
     /*
-    //Brute Force Approach
+    //Brute Force Approach by self
     int n = nums.size();
     vector<int> ans(2, -1);
 
@@ -27,6 +27,39 @@ vector<int> searchRange(vector<int> &nums, int target)
     }
     return ans;
     */
+
+    /*
+    // Brute Force Actual
+    int n = nums.size();
+    int first = -1, last = -1;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == target)
+        {
+            if (first == -1)
+            {
+                first = i;
+            }
+            last = i;
+        }
+    }
+    return {first, last};
+    */
+
+    // Optimal Approach 1
+    auto lb = lower_bound(nums.begin(), nums.end(), target);
+
+    if (lb == nums.end() || *lb != target)
+    {
+        return {-1, -1};
+    }
+
+    auto ub = upper_bound(nums.begin(), nums.end(), target);
+
+    return {
+        (int)(lb - nums.begin()),
+        (int)(ub - nums.begin() - 1)};
 }
 int main()
 {
