@@ -55,6 +55,21 @@ int lastOccurence(vector<int> &nums, int target)
 }
 int countOccurrences(vector<int> &nums, int target)
 {
+    /*
+    //Brute Force Approach
+    int n = nums.size();
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == target)
+        {
+            count++;
+        }
+    }
+    return count;
+    */
+
+    // Optimal Approach
     int first = firstOccurence(nums, target);
     if (first == -1)
         return 0;
