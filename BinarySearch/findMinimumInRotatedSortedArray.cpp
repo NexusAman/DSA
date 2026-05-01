@@ -26,11 +26,20 @@ int findMin(vector<int> &nums)
     {
         int mid = low + (high - low) / 2;
 
+        // If search space is already sorted
+        if (nums[low] <= nums[high])
+        {
+            minValue = min(minValue, nums[low]);
+        }
+
+        // if left half is sorted
         if (nums[low] <= nums[mid])
         {
             minValue = min(minValue, nums[low]);
             low = mid + 1;
         }
+
+        // if right half is sorted
         else
         {
             minValue = min(minValue, nums[mid]);
