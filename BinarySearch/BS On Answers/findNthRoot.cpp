@@ -32,7 +32,14 @@ int NthRoot(int n, int m)
     {
         int mid = low + (high - low) / 2;
 
-        int val = pow(mid, n);
+        long long val = 1;
+
+        for (int i = 0; i < n; i++)
+        {
+            val *= mid;
+            if (val > m)
+                break;
+        }
 
         if (val == m)
         {
