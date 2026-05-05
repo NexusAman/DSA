@@ -8,6 +8,7 @@ int floorSqrt(int n)
     return result;
     */
 
+    /*
     // Brute force approach
     int ans = 0;
     for (int i = 1; i <= n; i++)
@@ -19,6 +20,31 @@ int floorSqrt(int n)
         else
         {
             break;
+        }
+    }
+    return ans;
+    */
+
+    // Optimal Approach
+    int ans = 0;
+    int low = 1, high = n;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if ((long long)mid * mid == n)
+        {
+            return mid;
+        }
+        else if ((long long)mid * mid < n)
+        {
+            ans = mid;
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
         }
     }
     return ans;
