@@ -2,6 +2,8 @@
 using namespace std;
 int findKthPositive(vector<int> &arr, int k)
 {
+    /*
+    //Brute force approach(self)
     int n = arr.size();
     int pnt = 0;
     vector<int> ans;
@@ -17,6 +19,23 @@ int findKthPositive(vector<int> &arr, int k)
     }
 
     return ans[k - 1];
+    */
+
+    // Brute force approach
+    int n = arr.size();
+
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] <= k)
+        {
+            k++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return k;
 }
 int main()
 {
