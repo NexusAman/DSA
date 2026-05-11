@@ -21,6 +21,7 @@ int findKthPositive(vector<int> &arr, int k)
     return ans[k - 1];
     */
 
+    /*
     // Brute force approach
     int n = arr.size();
 
@@ -36,6 +37,29 @@ int findKthPositive(vector<int> &arr, int k)
         }
     }
     return k;
+    */
+
+    // Optimal Approach
+    int n = arr.size();
+
+    int low = 0, high = n - 1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        int missing = arr[mid] - (mid + 1);
+
+        if (missing < k)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+    return high + k + 1;
 }
 int main()
 {
