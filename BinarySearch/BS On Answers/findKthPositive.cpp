@@ -66,5 +66,4 @@ int main()
     vector<int> arr = {2, 3, 4, 7, 11};
     int k = 5;
     cout << findKthPositive(arr, k);
-    return 0;
 }
