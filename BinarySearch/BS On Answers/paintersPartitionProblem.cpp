@@ -91,5 +91,4 @@ int main()
     vector<int> arr = {10, 20, 30, 40};
     int k = 2;
     cout << minTime(arr, k);
-    return 0;
 }
