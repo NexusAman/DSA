@@ -39,19 +39,15 @@ double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
 {
     vector<int> mergedArray = merge(nums1, nums2);
     int n = mergedArray.size();
-
-    int low = 0;
-    int high = n - 1;
     double median = 0;
-    int mid = low + (high - low) / 2;
 
     if (n % 2 == 0)
     {
-        median = (double)(mergedArray[mid] + mergedArray[mid + 1]) / 2;
+        median = (double)(mergedArray[n / 2 - 1] + mergedArray[n / 2]) / 2;
     }
     else
     {
-        median = mergedArray[mid];
+        median = mergedArray[n / 2];
     }
     return median;
 }
