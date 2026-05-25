@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+/*
+//Brute force approach
 bool searchMatrix(vector<vector<int>> &matrix, int target)
 {
     int m = matrix.size();
@@ -13,6 +15,46 @@ bool searchMatrix(vector<vector<int>> &matrix, int target)
             {
                 return true;
             }
+        }
+    }
+    return false;
+}
+*/
+
+// Better approach
+bool binarySearch(vector<vector<int>> &matrix, int target, int low, int high, int row)
+{
+    while (low <= high)
+    {
+
+        int mid = low + (high - low) / 2;
+
+        if (matrix[row][mid] == target)
+        {
+            return true;
+        }
+        else if (matrix[row][mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+    return false;
+}
+bool searchMatrix(vector<vector<int>> &matrix, int target)
+{
+    int m = matrix.size();
+    int n = matrix[0].size();
+
+    for (int i = 0; i < m; i++)
+    {
+        int low = 0, high = n - 1;
+        if (binarySearch(matrix, target, low, high, i))
+        {
+            return true;
         }
     }
     return false;
