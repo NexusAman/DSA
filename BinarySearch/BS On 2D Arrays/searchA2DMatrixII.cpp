@@ -95,4 +95,5 @@ int main()
                                   {18, 21, 23, 26, 30}};
     int target = 5;
     cout << searchMatrix(matrix, target);
+    return 0;
 }
