@@ -17,5 +17,4 @@ int main()
     string num = "35427";
     string res = largestOddNumber(num);
     cout << res;
-    return 0;
 }
