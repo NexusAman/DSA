@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+/*
+// Brute force approach
 bool rotateString(string s, string goal)
 {
     int n = s.length();
@@ -11,6 +13,24 @@ bool rotateString(string s, string goal)
         {
             return true;
         }
+    }
+    return false;
+}
+*/
+
+// Optimal approach
+bool rotateString(string s, string goal)
+{
+    if (goal.length() != s.length())
+    {
+        return false;
+    }
+
+    string concatString = s + s;
+
+    if (concatString.find(goal) != string::npos)
+    {
+        return true;
     }
     return false;
 }
