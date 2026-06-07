@@ -24,7 +24,7 @@ int romanToInt(string s)
 }
 int main()
 {
-    string s = "III";
+    string s = "VI";
     cout << romanToInt(s);
     return 0;
 }
