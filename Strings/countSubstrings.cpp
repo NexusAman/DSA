@@ -23,5 +23,4 @@ int main()
     string s = "pqpqs";
     int k = 2;
     cout << countSubstrings(s, k);
-    return 0;
 }
