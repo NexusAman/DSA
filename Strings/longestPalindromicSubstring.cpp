@@ -40,10 +40,11 @@ string longestPalindrome(string s)
 }
 */
 
+/*
 // Better approach
 bool isPalindrome(int left, int right, string &s)
 {
-    while (left <= right)
+    while (left < right)
     {
         if (s[left] == s[right])
         {
@@ -80,13 +81,54 @@ string longestPalindrome(string s)
         }
     }
 
-    for (int k = startIndex; k < startIndex + longestSubstringLength; k++)
-    {
-        longestSubstring += s[k];
-    }
+    longestSubstring = s.substr(startIndex, longestSubstringLength);
     return longestSubstring;
 }
+*/
 
+// Optimal approach
+string longestPalindrome(string s)
+{
+    string LPS = s.substr(0, 1);
+
+    for (int i = 1; i < s.length(); i++)
+    {
+        // consider odd length
+        int low = i;
+        int high = i;
+
+        // checking palindrome
+        while (low >= 0 && high < s.length() && s[low] == s[high])
+        {
+            low--;
+            high++;
+        }
+
+        // extracting substring
+        string palindrome = s.substr(low + 1, high - low - 1);
+        if (palindrome.length() > LPS.length())
+        {
+            LPS = palindrome;
+        }
+
+        // consider even length
+        low = i - 1;
+        high = i;
+
+        while (low >= 0 && high < s.length() && s[low] == s[high])
+        {
+            low--;
+            high++;
+        }
+
+        palindrome = s.substr(low + 1, high - low - 1);
+        if (palindrome.length() > LPS.length())
+        {
+            LPS = palindrome;
+        }
+    }
+    return LPS;
+}
 int main()
 {
     string s = "babad";
