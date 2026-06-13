@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+/*
+// Brute force approach
 int beautySum(string s)
 {
     int n = s.length();
@@ -35,6 +37,43 @@ int beautySum(string s)
             {
                 beautySum += beauty;
             }
+        }
+    }
+    return beautySum;
+}
+*/
+
+// Optimal approach
+int beautySum(string s)
+{
+    int n = s.length();
+    int beautySum = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        vector<int> freq(26, 0);
+        for (int j = i; j < n; j++)
+        {
+            freq[s[j] - 'a']++;
+
+            int maxFreq = 0;
+            for (int k = 0; k < 26; k++)
+            {
+                maxFreq = max(maxFreq, freq[k]);
+            }
+
+            int minFreq = INT_MAX;
+            for (int l = 0; l < 26; l++)
+            {
+                if (freq[l] != 0)
+                {
+                    minFreq = min(minFreq, freq[l]);
+                }
+            }
+
+            int beauty = maxFreq - minFreq;
+
+            beautySum += beauty;
         }
     }
     return beautySum;
