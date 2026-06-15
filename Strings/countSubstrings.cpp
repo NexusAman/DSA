@@ -1,22 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
-int countSubstrings(string s, int k)
+// total count of substrings having <= k distinct elements
+int atMostKDistinct(string s, int k)
 {
+    unordered_map<char, int> mpp;
     int n = s.length();
+    int i = 0;
+    int j = 0;
+
     int count = 0;
 
-    for (int i = 0; i < n; i++)
+    while (j < n)
     {
-        for (int j = 0; j < n; j++)
+        mpp[s[j]]++;
+
+        while (mpp.size() > k)
         {
-            string substring = "";
-            for (int k = i; k <= j; k++)
+            // shrink window
+            mpp[s[i]]--;
+            if (mpp[s[i]] == 0)
             {
-                substring += s[k];
+                mpp.erase(s[i]);
             }
+            i++;
         }
+        count += (j - i) + 1; // substrings ending at j
+        j++;
     }
     return count;
+}
+int countSubstrings(string s, int k)
+{
+    return atMostKDistinct(s, k) - atMostKDistinct(s, k - 1);
 }
 int main()
 {
