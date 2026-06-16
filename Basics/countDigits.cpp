@@ -14,4 +14,5 @@ int main()
         count++;
     }
     cout << "No. of digits in " << originalNum << " is: " << count;
+    return 0;
 }
