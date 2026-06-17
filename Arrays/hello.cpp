@@ -12,5 +12,4 @@ int main()
 {
     cout << "Hello Genius!" << endl;
     hello("Aman");
-    return 0;
 }
