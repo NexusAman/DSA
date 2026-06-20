@@ -186,6 +186,4 @@ int main()
     // remove given node from the doubly linkedlist
     removeNode(head->next);
     printList(head);
-
-    return 0;
 }
