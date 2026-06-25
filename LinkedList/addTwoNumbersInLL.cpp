@@ -106,6 +106,4 @@ int main()
     // Add two numbers in linked list
     ListNode *head = addTwoNumbers(head1, head2);
     printList(head);
-
-    return 0;
 }
