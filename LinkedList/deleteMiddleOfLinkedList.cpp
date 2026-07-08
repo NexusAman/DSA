@@ -40,47 +40,72 @@ void printList(ListNode *head)
 }
 
 /*
-bool hasCycle(ListNode *head)
+// Brute force approach
+ListNode *deleteMiddle(ListNode *head)
 {
+    if(head == nullptr || head->next == nullptr) {
+        return nullptr;
+    }
+
     ListNode *temp = head;
-    unordered_map<ListNode *, int> mpp;
+    int cnt = 0;
 
     while (temp)
     {
-        if (mpp.find(temp) != mpp.end())
-        {
-            return true;
-        }
-        mpp[temp]++;
+        cnt++;
         temp = temp->next;
     }
-    return false;
+
+    int midPrevNode = cnt / 2;
+
+    temp = head;
+
+    while (temp)
+    {
+        midPrevNode--;
+        if (midPrevNode == 0)
+        {
+            break;
+        }
+        temp = temp->next;
+    }
+
+    ListNode *deleteNode = temp->next;
+    temp->next = deleteNode->next;
+    deleteNode->next = nullptr;
+    delete deleteNode;
+    return head;
 }
 */
 
-bool hasCycle(ListNode *head)
-{
-    ListNode *slow = head;
-    ListNode *fast = head;
+ListNode *deleteMiddle(ListNode *head){
+    if(head == nullptr || head->next == nullptr) return nullptr;
+
+    ListNode* slow = head;
+    ListNode* fast = head;
+
+    fast = fast->next->next;
 
     while (fast != nullptr && fast->next != nullptr)
     {
         slow = slow->next;
         fast = fast->next->next;
-
-        if (slow == fast)
-            return true;
     }
-    return false;
+    
+    ListNode* middle = slow->next;
+    slow->next = middle->next;
+    delete middle;
+    return head;
 }
 
 int main()
 {
-    vector<int> arr = {4, 5, 6};
+    vector<int> arr = {1, 2, 3, 4, 5};
     ListNode *head = convertArrToLL(arr);
     printList(head);
 
-    // check if linked list consist a loop or not
-    cout << hasCycle(head);
+    // deleting the middle of the linked list
+    head = deleteMiddle(head);
+    printList(head);
     return 0;
 }
