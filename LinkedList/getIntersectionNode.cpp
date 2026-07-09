@@ -162,13 +162,16 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
 
 int main()
 {
+    // linked list creation
     vector<int> arr1 = {1, 9, 1, 2, 4};
     ListNode *headA = convertArrToLL(arr1);
     printList(headA);
 
+    // creating another linked with intersection point
     ListNode *headB = addHeadKthElement(headA, 4);
     printList(headB);
 
+    // finding the intersection node
     ListNode *head = getIntersectionNode(headA, headB);
     cout << head->val;
     return 0;
