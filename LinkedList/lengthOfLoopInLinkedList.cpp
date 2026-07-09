@@ -38,7 +38,8 @@ void printList(ListNode *head)
     }
     cout << endl;
 }
-
+/*
+// Brute force approach
 int lengthOfLoop(ListNode *head)
 {
     unordered_map<ListNode *, int> mpp;
@@ -57,6 +58,33 @@ int lengthOfLoop(ListNode *head)
         mpp[temp] = timer;
         timer++;
         temp = temp->next;
+    }
+    return 0;
+}
+*/
+
+// Optimal approach
+int findLength(ListNode* slow, ListNode* fast){
+    int cnt = 1;
+    fast = fast->next;
+
+    while (slow != fast)
+    {
+        cnt++;
+        fast = fast->next;
+    }
+    return cnt;
+}
+
+int lengthOfLoop(ListNode *head){
+    ListNode* slow = head;
+    ListNode* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) return findLength(slow, fast);
     }
     return 0;
 }
