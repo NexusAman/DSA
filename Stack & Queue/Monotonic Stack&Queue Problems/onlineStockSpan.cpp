@@ -55,7 +55,7 @@ public:
             st.pop();
         }
 
-        int ans = ind - st.empty() ? -1 : st.top().second;
+        int ans = ind - (st.empty() ? -1 : st.top().second);
         st.push({price, ind});
 
         return ans;
